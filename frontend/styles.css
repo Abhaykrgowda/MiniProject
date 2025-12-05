@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #0e0f1a;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    background: #121423;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 25px;
+}
+
+.card {
+    background: rgba(255,255,255,0.06);
+    padding: 20px;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.card h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+}
+
+.dropzone {
+    background: rgba(255,255,255,0.05);
+    border: 2px dashed #5aa0ff;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.dropzone.active {
+    background: rgba(90,160,255,0.2);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #4f79ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.error-box {
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto 0;
+    display: none;
+}
+
+
+.btn:hover {
+    background: #3758d8;
+}
+
+.thumbs img {
+    margin-top: 10px;
+    max-width: 160px;
+    border-radius: 10px;
+}
+
+.result {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.confidence {
+    color: #79c0ff;
+    margin-top: 5px;
+}
+
+.annotated {
+    margin-top: 15px;
+    max-width: 100%;
+    border-radius: 10px;
+    display: none;
+}

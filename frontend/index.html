@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X-Ray Fracture Detection</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ERROR MESSAGE CARD */
+        #errorBox {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff4d4d;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-size: 16px;
+            display: none;
+            z-index: 9999;
+            max-width: 320px;
+        }
+
+        #errorBox strong {
+            font-size: 17px;
+        }
+
+        #errorBox button {
+            margin-top: 10px;
+            width: 100%;
+            background: white;
+            color: #ff4d4d;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Floating Error UI -->
+    <div id="errorBox">
+        <strong>Error</strong>
+        <div id="errorMsg"></div>
+        <button onclick="document.getElementById('errorBox').style.display='none'">OK</button>
+    </div>
+
+    <header>
+        <h1>AI-Powered X-Ray Analysis</h1>
+    </header>
+
+    <main>
+
+        <!-- PATIENT INFO -->
+        <section class="card">
+            <h2>🧍 Patient Information</h2>
+            <input id="patientName" placeholder="Enter patient name" />
+        </section>
+
+        <!-- UPLOAD X-RAY -->
+        <section class="card">
+            <h2>🩻 Upload X-Ray Image</h2>
+
+            <div id="dropzone" class="dropzone">
+                <p>Drag & Drop X-Ray Here<br>or click to browse</p>
+            </div>
+
+            <input id="fileInput" type="file" accept="image/*" hidden />
+
+            <div id="thumbs" class="thumbs"></div>
+
+            <button id="uploadBtn" class="btn">Upload + Analyze</button>
+        </section>
+
+        <!-- DIAGNOSIS PANEL -->
+        <section class="card">
+            <h2>🧪 Diagnosis Result</h2>
+            <div id="resultLabel" class="result">No prediction yet</div>
+            <div id="resultConf" class="confidence"></div>
+            <img id="annotatedImg" class="annotated" />
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

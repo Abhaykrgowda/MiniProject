@@ -1,0 +1,65 @@
+# ------------------------
+# Python
+# ------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# ------------------------
+# Environments
+# ------------------------
+env/
+venv/
+.venv/
+fracture_env/
+*.env
+
+# ------------------------
+# Machine Learning Models
+# ------------------------
+models/*.h5
+models/*.pkl
+models/*.keras
+models/*.tflite
+*.h5
+*.pkl
+*.sav
+*.joblib
+*.pt
+*.pth
+
+# ------------------------
+# Dataset / Features
+# ------------------------
+data/
+*.npy
+*.npz
+*.csv
+
+# ------------------------
+# IDE Files
+# ------------------------
+.vscode/
+.idea/
+
+# ------------------------
+# OS files
+# ------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------
+# Node / Frontend
+# ------------------------
+node_modules/
+dist/
+build/
+
+# ------------------------
+# Backup / Temp
+# ------------------------
+*.bak
+*.tmp
+*.swp

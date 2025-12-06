@@ -7,36 +7,47 @@
     <link rel="stylesheet" href="styles.css" />
 
     <style>
-        /* ERROR MESSAGE CARD */
+        /* RED ALERT ERROR BOX */
         #errorBox {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #ff4d4d;
+            background: #ff2e2e;
             color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            padding: 18px 22px;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(255,0,0,0.4);
             font-size: 16px;
             display: none;
             z-index: 9999;
-            max-width: 320px;
-        }
-
-        #errorBox strong {
-            font-size: 17px;
+            max-width: 350px;
+            animation: fadeIn 0.4s ease-out, shake 0.4s ease-in-out;
         }
 
         #errorBox button {
-            margin-top: 10px;
+            margin-top: 12px;
             width: 100%;
             background: white;
-            color: #ff4d4d;
+            color: #ff2e2e;
             border: none;
             padding: 8px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            50% { transform: translateX(6px); }
+            75% { transform: translateX(-4px); }
+            100% { transform: translateX(0); }
         }
     </style>
 

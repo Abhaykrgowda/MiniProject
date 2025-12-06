@@ -68,13 +68,6 @@ input {
     cursor: pointer;
     margin-top: 15px;
 }
-.error-box {
-    width: 100%;
-    max-width: 600px;
-    margin: 10px auto 0;
-    display: none;
-}
-
 
 .btn:hover {
     background: #3758d8;

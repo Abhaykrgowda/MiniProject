@@ -11,7 +11,7 @@
     const resultLabel = $('#resultLabel');
     const resultConf = $('#resultConf');
     const annotatedImg = $('#annotatedImg');
-    const errorBox = $('#errorBox');  // <-- NEW for custom UI errors
+    const errorBox = $('#errorBox');
 
 
     // -------------------------
@@ -66,14 +66,15 @@
         const file = fileInput.files[0];
         if (!file) return alert("No file selected");
 
-        errorBox.style.display = "none";   // clear previous errors
+        errorBox.style.display = "none"; // clear old errors
+        annotatedImg.style.display = "none"; // hide image preview
+        resultConf.innerText = "";          // reset confidence
 
         const form = new FormData();
-        form.append("file", file); // MUST match backend param name
+        form.append("file", file);
 
         try {
             const BACKEND_URL = window.BACKEND_URL || `http://${window.location.hostname}:8000`;
-
             console.log("Using BACKEND_URL:", BACKEND_URL);
 
             const res = await fetch(`${BACKEND_URL}/predict`, {
@@ -90,24 +91,27 @@
 
             const j = await res.json();
 
+
             // -----------------------------
-            // ❌ CASE 1: Image is NOT an X-ray
+            // ❌ CASE 1 — NOT AN X-RAY IMAGE
             // -----------------------------
-            if (j.status === "error" && j.prediction === "Invalid Image") {
+            if (j.status === "not_xray") {
+                resultLabel.innerHTML = "❌ Not an X-ray Image";
+
+                // Completely hide confidence
+                resultConf.innerText = "";
+
                 annotatedImg.style.display = "none";
-                resultLabel.innerHTML = `<span style="color:#ff5c5c; font-weight:700;">❌ Invalid Image</span>`;
-                resultConf.innerText = `Confidence: ${(j.confidence * 100).toFixed(1)}%`;
-                showError(`This image is <b>not an X-ray</b>. Please upload a valid X-ray.`);
+
+                showError(
+                    "The uploaded image is <b>not an X-ray</b>.<br>Please upload a radiographic X-ray image."
+                );
                 return;
             }
 
-            if (j.status === "error") {
-                showError(j.message || "Unknown backend error");
-                return;
-            }
 
             // -----------------------------
-            // ✅ CASE 2: Valid X-ray + Prediction
+            // ✅ CASE 2 — VALID X-RAY IMAGE
             // -----------------------------
             resultLabel.innerText = j.prediction;
             resultConf.innerText = (j.confidence * 100).toFixed(1) + "%";
@@ -119,7 +123,7 @@
 
         } catch (err) {
             console.error("Upload exception:", err);
-            showError("Network Error: Unable to reach backend.<br>Check if the backend is running.");
+            showError("Network Error: Backend not reachable.<br>Check if the server is running.");
         }
     });
 
@@ -131,13 +135,13 @@
         errorBox.style.display = "block";
         errorBox.innerHTML = `
             <div style="
-                padding:12px;
-                border-radius:10px;
-                background:#ffebeb;
-                border:1px solid #ff9c9c;
-                color:#b30000;
-                font-weight:600;
-                animation: fadeIn 0.3s ease-in-out;">
+                padding:14px;
+                border-radius:12px;
+                background:#ff4d4d;
+                color:white;
+                box-shadow:0 4px 12px rgba(0,0,0,0.25);
+                font-size:15px;
+                animation: fadeIn 0.25s ease-in-out;">
                 ${msg}
             </div>
         `;

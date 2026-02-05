@@ -96,7 +96,7 @@ uvicorn backend.app:app --host 0.0.0.0 --port 8000 --reload
 cd C:\M_P_Integration\frontend
 npx http-server -p 8080
 # or use Python:
-python -m http.server 8080
+start http://127.0.0.1:8080 && python -m http.server 8080
 # or Node (requires serve package):
 npx serve -l 8080
 ```

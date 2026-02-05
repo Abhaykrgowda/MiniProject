@@ -5,3 +5,5 @@ joblib
 tensorflow
 scikit-learn
 python-multipart
+opencv-python-headless
+
